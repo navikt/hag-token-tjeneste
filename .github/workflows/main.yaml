@@ -34,7 +34,6 @@ jobs:
         uses: nais/deploy/actions/deploy@v2
         env:
           CLUSTER: dev-gcp
-          RESOURCE: .nais/app.yaml # This points to the file we created in the previous step
+          RESOURCE: .nais/dev.yaml # This points to the file we created in the previous step
           VAR: image=${{ steps.docker-build-push.outputs.image }}
-          VARS: .nais/dev.yaml
           TELEMETRY: ${{ steps.docker-build-push.outputs.telemetry }}

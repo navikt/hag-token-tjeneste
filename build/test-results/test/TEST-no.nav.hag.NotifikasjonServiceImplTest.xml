@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="no.nav.hag.NotifikasjonServiceImplTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-06-05T07:09:44.185Z" hostname="deviancies-Y9G5Q7" time="0.06">
-  <properties/>
-  <testcase name="notifikasjonService forsøker med gammel merkelapp dersom et kall feiler" classname="no.nav.hag.NotifikasjonServiceImplTest" time="0.06"/>
-  <system-out><![CDATA[2025-06-05 09:09:44.242 [Test worker @coroutine#31] INFO  no.nav.hag.NotifikasjonServiceImpl - Ferdigstiller oppgave for forespørsel: 123. Utført av abc
-2025-06-05 09:09:44.242 [Test worker @coroutine#31] INFO  no.nav.hag.NotifikasjonServiceImpl - Feil oppstod, forsøker heller å ferdigstille oppgave med gammel merkelapp
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
