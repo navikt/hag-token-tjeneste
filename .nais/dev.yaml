@@ -15,5 +15,9 @@ spec:
     requests:
       cpu: 50m
       memory: 128Mi
-  secureLogs:
-    enabled: true
+  accessPolicy:
+    outbound:
+      external:
+        - host: test.maskinporten.no
+  envFrom:
+    - secret: tigersys-maskinporten
