@@ -1,5 +1,6 @@
 package no.nav.hag.plugins
 
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.HttpStatusCode.Companion.BadRequest
 import io.ktor.server.application.Application
 import io.ktor.server.response.respond
@@ -21,21 +22,31 @@ fun Application.configureRouting() {
     routing {
         get("/token/{orgNr}") {
             val orgNr = call.parameters["orgNr"] ?: return@get call.respondText("Mangler orgNr", status = BadRequest)
+            try {
+                val config =
+                    MaskinportenClientConfigPkey(
+                        kid = maskinportenKid,
+                        privateKey = maskinportenPrivateKey,
+                        issuer = MASKINPORTEN_CLIENT_ISSUER,
+                        scope = SCOPE,
+                        clientId = maskinportenIntegrasjonsId,
+                        endpoint = MASKINPORTEN_TOKEN_ENDPOINT,
+                        additionalClaims = getSystemBrukerClaim(orgNr),
+                    )
 
-            val config =
-                MaskinportenClientConfigPkey(
-                    kid = maskinportenKid,
-                    privateKey = maskinportenPrivateKey,
-                    issuer = MASKINPORTEN_CLIENT_ISSUER,
-                    scope = SCOPE,
-                    clientId = maskinportenIntegrasjonsId,
-                    endpoint = MASKINPORTEN_TOKEN_ENDPOINT,
-                    additionalClaims = getSystemBrukerClaim(orgNr),
-                )
+                val token = MaskinportenClient(config).fetchNewAccessToken()
 
-            val token = MaskinportenClient(config).fetchNewAccessToken()
-
-            call.respond(token)
+                call.respond(token)
+            } catch (e: Exception) {
+                if (e.message?.contains("System user not found") == true) {
+                    call.respond(
+                        HttpStatusCode.NotFound,
+                        "Fant ikke systembruker for orgnr: $orgNr eller orgamisasjonen ikke har tilgang til tjenesten",
+                    )
+                } else {
+                    call.respond(HttpStatusCode.InternalServerError, "Feilet å hente systembruker: ${e.message}")
+                }
+            }
         }
     }
 }

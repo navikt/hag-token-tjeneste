@@ -34,8 +34,6 @@ dependencies {
     implementation("net.logstash.logback:logstash-logback-encoder:8.0")
     implementation("ch.qos.logback:logback-classic:$logback_version")
     implementation("io.ktor:ktor-client-apache5")
-    implementation("io.ktor:ktor-client-content-negotiation")
-    implementation("io.ktor:ktor-client-core")
     implementation("io.ktor:ktor-server-auth-jvm")
     implementation("io.ktor:ktor-server-auth-jwt-jvm")
     implementation("io.ktor:ktor-server-core-jvm")
@@ -45,7 +43,6 @@ dependencies {
 
     implementation("no.nav.helsearbeidsgiver:maskinporten-client:0.2.1.1-SNAPSHOT")
 
-    testImplementation("io.ktor:ktor-client-core")
     testImplementation("io.ktor:ktor-server-test-host-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
 }
