@@ -23,7 +23,7 @@ fun Application.tokenRouteMedClaim(
     scope: String,
 ) {
     routing {
-        get("/$path") {
+        get("/$path/{orgNr}") {
             val orgNr = call.parameters["orgNr"] ?: return@get call.respondText("Mangler orgNr", status = BadRequest)
             try {
                 val config =
