@@ -37,7 +37,7 @@ fun Application.configureRouting() {
 
                 val token = MaskinportenClient(config).fetchNewAccessToken()
 
-                call.respond(token)
+                call.respondText(token.tokenResponse.accessToken, status = HttpStatusCode.OK)
             } catch (e: Exception) {
                 if (e.message?.contains("System user not found") == true) {
                     call.respond(
