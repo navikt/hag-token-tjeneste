@@ -1,4 +1,4 @@
-package no.nav.hag.plugins
+package no.nav.hag.routes
 
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.HttpStatusCode.Companion.BadRequest
@@ -15,13 +15,15 @@ import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
 import no.nav.helsearbeidsgiver.maskinporten.getSystemBrukerClaim
 
-private const val SCOPE = "nav:helseytelser/sykepenger"
 private const val MASKINPORTEN_TOKEN_ENDPOINT = "https://test.maskinporten.no/token"
 private const val MASKINPORTEN_CLIENT_ISSUER = "https://test.maskinporten.no/"
 
-fun Application.configureRouting() {
+fun Application.tokenRouteMedClaim(
+    path: String,
+    scope: String,
+) {
     routing {
-        get("/token/{orgNr}") {
+        get("/$path") {
             val orgNr = call.parameters["orgNr"] ?: return@get call.respondText("Mangler orgNr", status = BadRequest)
             try {
                 val config =
@@ -29,7 +31,7 @@ fun Application.configureRouting() {
                         kid = maskinportenKid,
                         privateKey = maskinportenPrivateKey,
                         issuer = MASKINPORTEN_CLIENT_ISSUER,
-                        scope = SCOPE,
+                        scope = scope,
                         clientId = maskinportenIntegrasjonsId,
                         endpoint = MASKINPORTEN_TOKEN_ENDPOINT,
                         additionalClaims = getSystemBrukerClaim(orgNr),
@@ -39,14 +41,34 @@ fun Application.configureRouting() {
 
                 call.respondText(token.tokenResponse.accessToken, status = HttpStatusCode.OK)
             } catch (e: Exception) {
-                if (e.message?.contains("System user not found") == true) {
-                    call.respond(
-                        HttpStatusCode.NotFound,
-                        "Fant ikke systembruker for orgnr: $orgNr eller orgamisasjonen ikke har tilgang til tjenesten",
+                call.respond(HttpStatusCode.InternalServerError, "Feil: ${e.message}")
+            }
+        }
+    }
+}
+
+fun Application.tokenRouteUtenClaim(
+    path: String,
+    scope: String,
+) {
+    routing {
+        get("/$path") {
+            try {
+                val config =
+                    MaskinportenClientConfigPkey(
+                        kid = maskinportenKid,
+                        privateKey = maskinportenPrivateKey,
+                        issuer = MASKINPORTEN_CLIENT_ISSUER,
+                        scope = scope,
+                        clientId = maskinportenIntegrasjonsId,
+                        endpoint = MASKINPORTEN_TOKEN_ENDPOINT,
                     )
-                } else {
-                    call.respond(HttpStatusCode.InternalServerError, "Feilet å hente systembruker: ${e.message}")
-                }
+
+                val token = MaskinportenClient(config).fetchNewAccessToken()
+
+                call.respondText(token.tokenResponse.accessToken, status = HttpStatusCode.OK)
+            } catch (e: Exception) {
+                call.respond(HttpStatusCode.InternalServerError, "Feil: ${e.message}")
             }
         }
     }
