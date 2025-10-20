@@ -13,7 +13,7 @@ import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
 import no.nav.helsearbeidsgiver.maskinporten.getSystemBrukerClaim
 
-private const val SCOPE = "nav:helse/im.read"
+private const val SCOPE = "nav:helseytelser:sykepenger"
 private const val MASKINPORTEN_TOKEN_ENDPOINT = "https://test.maskinporten.no/token"
 private const val MASKINPORTEN_CLIENT_ISSUER = "https://test.maskinporten.no/"
 
