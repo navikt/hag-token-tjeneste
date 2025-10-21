@@ -18,7 +18,7 @@ fun Application.module() {
 
     tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
-    tokenRouteMedClaim("subscribe", "altinn:events/subscribe")
+    tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 
     tokenRouteUtenClaim("systemregister", "altinn:authentication/systemregister.write")
     tokenRouteUtenClaim(
