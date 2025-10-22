@@ -1,5 +1,6 @@
 val kotlin_version: String by project
 val logback_version: String by project
+val mockOauth2ServerVersion: String by project
 
 plugins {
     kotlin("jvm") version "2.0.20"
@@ -45,6 +46,16 @@ dependencies {
 
     testImplementation("io.ktor:ktor-server-test-host-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("no.nav.security:mock-oauth2-server:$mockOauth2ServerVersion")
+}
+
+tasks.test {
+    useJUnitPlatform()
+    environment("MASKINPORTEN_TOKEN_ENDPOINT", "http://localhost:33445/default/token")
+    environment("MASKINPORTEN_CLIENT_ISSUER", "default")
+    environment("MASKINPORTEN_KID", "kid")
+    environment("MASKINPORTEN_INTEGRATION_ID", "integrationId")
 }
 
 tasks.register("sjekkIngenPublicNais") {
