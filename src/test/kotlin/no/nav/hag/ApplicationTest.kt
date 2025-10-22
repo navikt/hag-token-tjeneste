@@ -39,10 +39,8 @@ class ApplicationTest {
 }
 
 fun mockPrivateKey(): String {
-    val kpg = KeyPairGenerator.getInstance("RSA")
-    kpg.initialize(2048)
-    val privateKey = kpg.generateKeyPair().private
-    val base64 = Base64.getEncoder().encodeToString(privateKey.encoded)
+    val kpg = KeyPairGenerator.getInstance("RSA").apply { initialize(2048) }
+    val base64 = Base64.getEncoder().encodeToString(kpg.generateKeyPair().private.encoded)
     val chunked = base64.chunked(64).joinToString("\n")
     return "-----BEGIN PRIVATE KEY-----\n$chunked\n-----END PRIVATE KEY-----"
 }
