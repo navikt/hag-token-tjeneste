@@ -17,7 +17,7 @@ class ApplicationTest {
     val testApplication =
         TestApplication {
             application {
-                tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
+                tokenRouteMedClaim("systembruker", "nav:syfo/arkivporten")
             }
         }
 
