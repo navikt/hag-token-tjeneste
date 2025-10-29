@@ -55,7 +55,7 @@ tasks.test {
     environment("MASKINPORTEN_TOKEN_ENDPOINT", "http://localhost:33445/default/token")
     environment("MASKINPORTEN_CLIENT_ISSUER", "default")
     environment("MASKINPORTEN_KID", "kid")
-    environment("MASKINPORTEN_INTEGRATION_ID", "integrationId")
+    environment("MASKINPORTEN_CLIENT_ID", "integrationId")
 }
 
 tasks.register("sjekkIngenPublicNais") {

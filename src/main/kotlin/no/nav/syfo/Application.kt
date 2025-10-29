@@ -16,7 +16,7 @@ fun Application.module() {
     val logger = LoggerFactory.getLogger(Application::class.java)
     logger.info("Started App")
 
-    tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
+    tokenRouteMedClaim("systembruker", "nav:syfo/arkivporten")
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 

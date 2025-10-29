@@ -25,4 +25,4 @@ spec:
     - name: MASKINPORTEN_CLIENT_ISSUER
       value: "https://test.maskinporten.no/"
   envFrom:
-    - secret: maskinporten-secrets
+    - secret: token-tjeneste-maskinporten-secrets
