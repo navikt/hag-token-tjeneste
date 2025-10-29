@@ -9,11 +9,11 @@ plugins {
     id("org.jmailen.kotlinter")
 }
 
-group = "no.nav.hag"
+group = "no.nav.syfo"
 version = "0.0.1"
 
 application {
-    mainClass.set("no.nav.hag.ApplicationKt")
+    mainClass.set("no.nav.syfo.ApplicationKt")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")

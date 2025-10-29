@@ -1,10 +1,10 @@
-package no.nav.hag
+package no.nav.syfo
 
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import no.nav.hag.routes.tokenRouteMedClaim
-import no.nav.hag.routes.tokenRouteUtenClaim
+import no.nav.syfo.routes.tokenRouteMedClaim
+import no.nav.syfo.routes.tokenRouteUtenClaim
 import org.slf4j.LoggerFactory
 
 fun main() {

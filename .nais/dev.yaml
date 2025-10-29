@@ -2,10 +2,10 @@ apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
   name: token-tjeneste
-  namespace: helsearbeidsgiver
+  namespace: team-esyfo
 spec:
   ingresses:
-    - https://hag-token.intern.dev.nav.no
+    - https://esyfo-token.intern.dev.nav.no
   image: {{image}}
   port: 8080
   replicas:
@@ -25,4 +25,4 @@ spec:
     - name: MASKINPORTEN_CLIENT_ISSUER
       value: "https://test.maskinporten.no/"
   envFrom:
-    - secret: tigersys-maskinporten
+    - secret: maskinporten-secrets
