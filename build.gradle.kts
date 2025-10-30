@@ -9,11 +9,11 @@ plugins {
     id("org.jmailen.kotlinter")
 }
 
-group = "no.nav.hag"
+group = "no.nav.syfo"
 version = "0.0.1"
 
 application {
-    mainClass.set("no.nav.hag.ApplicationKt")
+    mainClass.set("no.nav.syfo.ApplicationKt")
 
     val isDevelopment: Boolean = project.ext.has("development")
     applicationDefaultJvmArgs = listOf("-Dio.ktor.development=$isDevelopment")
@@ -55,7 +55,7 @@ tasks.test {
     environment("MASKINPORTEN_TOKEN_ENDPOINT", "http://localhost:33445/default/token")
     environment("MASKINPORTEN_CLIENT_ISSUER", "default")
     environment("MASKINPORTEN_KID", "kid")
-    environment("MASKINPORTEN_INTEGRATION_ID", "integrationId")
+    environment("MASKINPORTEN_CLIENT_ID", "integrationId")
 }
 
 tasks.register("sjekkIngenPublicNais") {

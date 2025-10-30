@@ -1,10 +1,10 @@
-package no.nav.hag
+package no.nav.syfo
 
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
-import no.nav.hag.routes.tokenRouteMedClaim
-import no.nav.hag.routes.tokenRouteUtenClaim
+import no.nav.syfo.routes.tokenRouteMedClaim
+import no.nav.syfo.routes.tokenRouteUtenClaim
 import org.slf4j.LoggerFactory
 
 fun main() {
@@ -16,7 +16,7 @@ fun Application.module() {
     val logger = LoggerFactory.getLogger(Application::class.java)
     logger.info("Started App")
 
-    tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
+    tokenRouteMedClaim("systembruker", "nav:syfo/arkivporten")
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 
