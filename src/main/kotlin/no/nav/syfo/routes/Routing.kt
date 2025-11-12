@@ -19,11 +19,12 @@ import no.nav.helsearbeidsgiver.maskinporten.getSystemBrukerClaim
 
 fun Application.tokenRouteMedClaim(
     path: String,
-    scope: String,
+    defaultScope: String,
 ) {
     routing {
         get("/$path/{orgNr}") {
             val orgNr = call.parameters["orgNr"] ?: return@get call.respondText("Mangler orgNr", status = BadRequest)
+            val providedScope = call.request.queryParameters["scope"]
 
             try {
                 val config =
@@ -31,7 +32,7 @@ fun Application.tokenRouteMedClaim(
                         kid = maskinportenKid,
                         privateKey = maskinportenPrivateKey,
                         issuer = maskinportenClientIssuer,
-                        scope = scope,
+                        scope = providedScope ?: defaultScope,
                         clientId = maskinportenIntegrasjonsId,
                         endpoint = maskinportenTokenEndpoint,
                         additionalClaims = getSystemBrukerClaim(orgNr),
