@@ -17,6 +17,7 @@ fun Application.module() {
     logger.info("Started App")
 
     tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
+    tokenRouteMedClaim("systembruker-fler-scopes", "nav:helseytelser/sykepenger altinn:events.subscribe digdir:dialogporten")
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 
