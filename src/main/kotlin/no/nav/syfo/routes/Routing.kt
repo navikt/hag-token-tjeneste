@@ -3,7 +3,6 @@ package no.nav.syfo.routes
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.HttpStatusCode.Companion.BadRequest
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
@@ -15,7 +14,7 @@ import no.nav.syfo.maskinportenPrivateKey
 import no.nav.syfo.maskinportenTokenEndpoint
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
-import no.nav.helsearbeidsgiver.maskinporten.getSystemBrukerClaim
+import no.nav.helsearbeidsgiver.maskinporten.getSystembrukerClaim
 
 fun Application.tokenRouteMedClaim(
     path: String,
@@ -35,7 +34,7 @@ fun Application.tokenRouteMedClaim(
                         scope = providedScope ?: defaultScope,
                         clientId = maskinportenIntegrasjonsId,
                         endpoint = maskinportenTokenEndpoint,
-                        additionalClaims = getSystemBrukerClaim(orgNr),
+                        additionalClaims = getSystembrukerClaim(orgNr),
                     )
 
                 val token = MaskinportenClient(config).fetchNewAccessToken()
