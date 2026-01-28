@@ -16,6 +16,15 @@ fun Application.module() {
     val logger = LoggerFactory.getLogger(Application::class.java)
     logger.info("Started App")
 
+    routing {
+        get("/intern/hemmelig-endepunkt"){
+            call.respondText("Dette er et hemmelig endepunkt")
+        }
+        get("/open/ikke-hemmelig-endepunkt"){
+            call.respondText("Bare en åpen endepunkt")
+        }
+    }
+
     tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
     tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")

@@ -5,7 +5,7 @@ metadata:
   namespace: helsearbeidsgiver
 spec:
   ingresses:
-    - https://hag-token.intern.dev.nav.no
+    - https://hag-token.intern.dev.nav.no/open
   image: {{image}}
   port: 8080
   replicas:
