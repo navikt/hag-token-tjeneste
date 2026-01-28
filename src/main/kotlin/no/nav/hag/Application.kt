@@ -1,8 +1,12 @@
 package no.nav.hag
 
 import io.ktor.server.application.Application
+import io.ktor.server.application.call
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import io.ktor.server.response.respondText
+import io.ktor.server.routing.get
+import io.ktor.server.routing.routing
 import no.nav.hag.routes.tokenRouteMedClaim
 import no.nav.hag.routes.tokenRouteUtenClaim
 import org.slf4j.LoggerFactory
@@ -17,10 +21,10 @@ fun Application.module() {
     logger.info("Started App")
 
     routing {
-        get("/intern/hemmelig-endepunkt"){
+        get("/intern/hemmelig-endepunkt") {
             call.respondText("Dette er et hemmelig endepunkt")
         }
-        get("/open/ikke-hemmelig-endepunkt"){
+        get("/open/ikke-hemmelig-endepunkt") {
             call.respondText("Bare en åpen endepunkt")
         }
     }
