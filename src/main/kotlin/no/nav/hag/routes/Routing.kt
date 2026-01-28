@@ -41,7 +41,7 @@ fun Application.tokenRouteMedClaim(
 
                 call.respondText(token.tokenResponse.accessToken, status = HttpStatusCode.OK)
             } catch (e: Exception) {
-                call.respond(HttpStatusCode.InternalServerError, "Feil: ${e.message}")
+                call.respond(HttpStatusCode.InternalServerError, "Feil:  ${e.message}")
             }
         }
     }
