@@ -1,0 +1,32 @@
+[tasks.systembruker]
+description = "Hent token"
+usage = '''
+arg "<tjeneste>" help="Tjenesten man skal hente systembruker for (narmesteleder, dialogporten)" {
+  choices "narmesteleder" "dialogporten"
+}
+arg "<organisasjonsnummer>" help="Organisasjonsnummeret man skal ha systembruker for"
+'''
+
+run = '''
+curl -sS "https://esyfo-token.intern.dev.nav.no/systembruker/${usage_tjeneste}/${usage_organisasjonsnummer}"
+'''
+
+[tasks.nl]
+description = "Hent token for narmesteleder"
+usage = '''
+arg "<organisasjonsnummer>" help="Organisasjonsnummeret man skal ha systembruker for"
+'''
+
+run = '''
+mise systembruker narmesteleder "${usage_organisasjonsnummer}"
+'''
+
+[tasks.dokporten]
+description = "Hent token for dokumentporten"
+usage = '''
+arg "<organisasjonsnummer>" help="Organisasjonsnummeret man skal ha systembruker for"
+'''
+
+run = '''
+mise systembruker dokumentporten "${usage_organisasjonsnummer}"
+'''
