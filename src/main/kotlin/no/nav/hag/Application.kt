@@ -3,8 +3,11 @@ package no.nav.hag
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import no.nav.hag.routes.dialogportenTokenRoute
 import no.nav.hag.routes.tokenRouteMedClaim
 import no.nav.hag.routes.tokenRouteUtenClaim
+import no.nav.helsearbeidsgiver.auth.AuthClient
+import no.nav.helsearbeidsgiver.auth.dialogportenTokenGetter
 import org.slf4j.LoggerFactory
 
 fun main() {
@@ -25,4 +28,5 @@ fun Application.module() {
         "systembruker-forespoersel",
         "altinn:authentication/systemuser.request.read altinn:authentication/systemuser.request.write",
     )
+    dialogportenTokenRoute(AuthClient().dialogportenTokenGetter())
 }

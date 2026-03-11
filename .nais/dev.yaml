@@ -18,8 +18,16 @@ spec:
   accessPolicy:
     outbound:
       external:
+        - host: platform.tt02.altinn.no
         - host: test.maskinporten.no
+  maskinporten:
+    enabled: true
+    scopes:
+      consumes:
+        - name: "digdir:dialogporten.serviceprovider"
   env:
+    - name: ALTINN_3_BASE_URL
+    - value: "https://platform.tt02.altinn.no"
     - name: MASKINPORTEN_TOKEN_ENDPOINT
       value: "https://test.maskinporten.no/token"
     - name: MASKINPORTEN_CLIENT_ISSUER

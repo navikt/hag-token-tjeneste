@@ -73,3 +73,11 @@ fun Application.tokenRouteUtenClaim(
         }
     }
 }
+
+fun Application.dialogportenTokenRoute(getToken: () -> String) {
+    routing {
+        get("/dialogporten/token") {
+            call.respondText(getToken(), status = HttpStatusCode.OK)
+        }
+    }
+}
