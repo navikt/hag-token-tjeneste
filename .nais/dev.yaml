@@ -27,7 +27,9 @@ spec:
         - name: "digdir:dialogporten.serviceprovider"
   env:
     - name: ALTINN_3_BASE_URL
-    - value: "https://platform.tt02.altinn.no"
+      value: "https://platform.tt02.altinn.no"
+    - name: DIALOGPORTEN_SCOPE
+      value: "digdir:dialogporten.serviceprovider"
     - name: MASKINPORTEN_TOKEN_ENDPOINT
       value: "https://test.maskinporten.no/token"
     - name: MASKINPORTEN_CLIENT_ISSUER
