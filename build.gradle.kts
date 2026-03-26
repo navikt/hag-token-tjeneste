@@ -1,4 +1,4 @@
-val junitJupiterVersion = "6.0.1"
+val junitJupiterVersion = "6.0.3"
 val kotlinVersion = "2.2.21"
 val logbackVersion = "1.5.32"
 val logstashVersion = "8.0"
