@@ -7,14 +7,14 @@ import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
+import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
+import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
+import no.nav.helsearbeidsgiver.maskinporten.getSystembrukerClaim
 import no.nav.syfo.maskinportenClientIssuer
 import no.nav.syfo.maskinportenIntegrasjonsId
 import no.nav.syfo.maskinportenKid
 import no.nav.syfo.maskinportenPrivateKey
 import no.nav.syfo.maskinportenTokenEndpoint
-import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
-import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
-import no.nav.helsearbeidsgiver.maskinporten.getSystembrukerClaim
 
 fun Application.tokenRouteMedClaim(
     path: String,

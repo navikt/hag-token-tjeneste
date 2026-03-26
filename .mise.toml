@@ -30,3 +30,14 @@ arg "<organisasjonsnummer>" help="Organisasjonsnummeret man skal ha systembruker
 run = '''
 mise systembruker dokumentporten "${usage_organisasjonsnummer}"
 '''
+[tasks.test]
+description = "Run tests with gradle"
+run = './gradlew test'
+
+[tasks.lint]
+description = "Run check with gradle"
+run = './gradlew ktlintCheck'
+
+[tasks.format]
+description = "Run ktlintFormat with gradle"
+run = './gradlew ktlintFormat'

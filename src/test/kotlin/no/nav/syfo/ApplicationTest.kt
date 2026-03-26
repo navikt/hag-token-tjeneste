@@ -4,8 +4,8 @@ import io.ktor.client.request.get
 import io.ktor.client.statement.bodyAsText
 import io.ktor.server.testing.TestApplication
 import kotlinx.coroutines.runBlocking
-import no.nav.syfo.routes.tokenRouteMedClaim
 import no.nav.security.mock.oauth2.MockOAuth2Server
+import no.nav.syfo.routes.tokenRouteMedClaim
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import java.security.KeyPairGenerator
