@@ -41,7 +41,7 @@ fun Application.tokenRouteMedClaim(
 
                 call.respondText(token.tokenResponse.accessToken, status = HttpStatusCode.OK)
             } catch (e: Exception) {
-                call.respond(HttpStatusCode.InternalServerError, "Feil: ${e.message}")
+                call.respond(HttpStatusCode.InternalServerError, "Feil:  ${e.message}")
             }
         }
     }
@@ -70,6 +70,14 @@ fun Application.tokenRouteUtenClaim(
             } catch (e: Exception) {
                 call.respond(HttpStatusCode.InternalServerError, "Feil: ${e.message}")
             }
+        }
+    }
+}
+
+fun Application.dialogportenTokenRoute(getToken: () -> String) {
+    routing {
+        get("/dialogporten/token") {
+            call.respondText(getToken(), status = HttpStatusCode.OK)
         }
     }
 }

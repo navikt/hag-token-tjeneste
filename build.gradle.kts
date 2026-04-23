@@ -1,9 +1,9 @@
-val junitJupiterVersion = "6.0.3"
 val kotlinVersion = "2.3.20"
 val logbackVersion = "1.5.32"
+val mockOauth2ServerVersion = "3.0.1"
+val junitJupiterVersion = "6.0.3"
 val logstashVersion = "9.0"
 val maskinportenClientVersion = "0.3.0-SNAPSHOT"
-val mockOauth2ServerVersion = "3.0.1"
 
 plugins {
     kotlin("jvm") version "2.2.21"
@@ -43,6 +43,12 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.ktor:ktor-client-content-negotiation")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
+    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
+    implementation("io.ktor:ktor-client-content-negotiation")
+    implementation("io.ktor:ktor-serialization-kotlinx-json")
 
     implementation("no.nav.helsearbeidsgiver:maskinporten-client:$maskinportenClientVersion")
 

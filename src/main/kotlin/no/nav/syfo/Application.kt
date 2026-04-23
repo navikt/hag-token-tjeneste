@@ -3,6 +3,9 @@ package no.nav.syfo
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
+import no.nav.syfo.auth.AuthClient
+import no.nav.syfo.auth.dialogportenTokenGetter
+import no.nav.syfo.routes.dialogportenTokenRoute
 import no.nav.syfo.routes.tokenRouteMedClaim
 import no.nav.syfo.routes.tokenRouteUtenClaim
 import org.slf4j.LoggerFactory
@@ -27,4 +30,5 @@ fun Application.module() {
         "systembruker-forespoersel",
         "altinn:authentication/systemuser.request.read altinn:authentication/systemuser.request.write",
     )
+    dialogportenTokenRoute(AuthClient().dialogportenTokenGetter())
 }

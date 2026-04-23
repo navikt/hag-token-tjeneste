@@ -1,3 +1,4 @@
+
 [tasks.systembruker]
 description = "Hent token"
 usage = '''
@@ -30,6 +31,7 @@ arg "<organisasjonsnummer>" help="Organisasjonsnummeret man skal ha systembruker
 run = '''
 mise systembruker dokumentporten "${usage_organisasjonsnummer}"
 '''
+
 [tasks.test]
 description = "Run tests with gradle"
 run = './gradlew test'
@@ -41,3 +43,19 @@ run = './gradlew ktlintCheck'
 [tasks.format]
 description = "Run ktlintFormat with gradle"
 run = './gradlew ktlintFormat'
+
+[tasks."gh:refresh"]
+description = "Refresh token with packages scope. Used to fetch gradle deps."
+run = 'gh auth refresh --scopes read:packages && export ORG_GRADLE_PROJECT_githubPassword=$(gh auth token)'
+
+[tasks."gh:token"]
+description = "Add token to env vars"
+run = 'export ORG_GRADLE_PROJECT_githubPassword=$(gh auth token)'
+
+[tasks.assemble]
+description = "Assemble the project with gradle. Make sure you have ran gh:token first"
+run = './gradlew assemble'
+
+[tasks.build]
+description = "Build the project with gradle. Make sure you have ran gh:token first"
+run = './gradlew build -x test'
