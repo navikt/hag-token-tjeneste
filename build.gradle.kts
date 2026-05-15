@@ -1,4 +1,4 @@
-val kotlinVersion = "2.3.20"
+val kotlinVersion = "2.3.21"
 val logbackVersion = "1.5.32"
 val mockOauth2ServerVersion = "3.0.3"
 val junitJupiterVersion = "6.0.3"
