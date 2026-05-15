@@ -6,7 +6,7 @@ val logstashVersion = "9.0"
 val maskinportenClientVersion = "0.3.0-SNAPSHOT"
 
 plugins {
-    kotlin("jvm") version "2.2.21"
+    kotlin("jvm") version "2.3.21"
     kotlin("plugin.serialization") version "2.2.21"
     id("io.ktor.plugin") version "3.4.2"
     id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
