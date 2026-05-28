@@ -24,7 +24,6 @@ spec:
     enabled: true
     scopes:
       consumes:
-        - name: "digdir:dialogporten.serviceprovider.changetransmissions"
         - name: "digdir:dialogporten.serviceprovider"
   env:
     - name: ALTINN_3_BASE_URL
