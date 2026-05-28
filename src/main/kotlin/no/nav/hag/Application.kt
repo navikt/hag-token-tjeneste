@@ -20,7 +20,7 @@ fun Application.module() {
     logger.info("Started App")
 
     tokenRouteMedClaim("systembruker", "nav:helseytelser/sykepenger")
-    tokenRouteMedClaim("dialogporten", "digdir:dialogporten.serviceprovider.changetransmissions")
+    tokenRouteMedClaim("dialogporten", "digdir:dialogporten")
     tokenRouteMedClaim("subscribe", "altinn:events.subscribe")
 
     tokenRouteUtenClaim("systemregister", "altinn:authentication/systemregister.write")
