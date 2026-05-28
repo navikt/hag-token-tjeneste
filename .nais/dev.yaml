@@ -24,7 +24,7 @@ spec:
     enabled: true
     scopes:
       consumes:
-        - name: "digdir:dialogporten.serviceprovider"
+        - name: "digdir:dialogporten.serviceprovider.changetransmissions"
   env:
     - name: ALTINN_3_BASE_URL
       value: "https://platform.tt02.altinn.no"
