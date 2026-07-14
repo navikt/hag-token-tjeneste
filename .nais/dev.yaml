@@ -25,13 +25,12 @@ spec:
     scopes:
       consumes:
         - name: "digdir:dialogporten.serviceprovider"
-        - name: "digdir:dialogporten.serviceprovider.search"
         - name: "digdir:dialogporten.serviceprovider.changetransmissions"
   env:
     - name: ALTINN_3_BASE_URL
       value: "https://platform.tt02.altinn.no"
     - name: DIALOGPORTEN_SCOPE
-      value: "digdir:dialogporten.serviceprovider digdir:dialogporten.serviceprovider.changetransmissions digdir:dialogporten.serviceprovider.search"
+      value: "digdir:dialogporten.serviceprovider digdir:dialogporten.serviceprovider.changetransmissions"
     - name: MASKINPORTEN_TOKEN_ENDPOINT
       value: "https://test.maskinporten.no/token"
     - name: MASKINPORTEN_CLIENT_ISSUER
