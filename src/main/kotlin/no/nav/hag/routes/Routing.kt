@@ -14,15 +14,7 @@ import no.nav.hag.maskinportenPrivateKey
 import no.nav.hag.maskinportenTokenEndpoint
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
-
-private fun getSystemBrukerClaim(orgNr: String): Map<String, Any> =
-    mapOf(
-        "consumer" to
-            mapOf(
-                "authority" to "iso6523-actorid-upis",
-                "ID" to orgNr,
-            ),
-    )
+import no.nav.helsearbeidsgiver.maskinporten.getSystembrukerClaim
 
 fun Application.tokenRouteMedClaim(
     path: String,
@@ -41,7 +33,7 @@ fun Application.tokenRouteMedClaim(
                         scope = scope,
                         clientId = maskinportenIntegrasjonsId,
                         endpoint = maskinportenTokenEndpoint,
-                        additionalClaims = getSystemBrukerClaim(orgNr),
+                        additionalClaims = getSystembrukerClaim(orgNr),
                     )
 
                 val token = MaskinportenClient(config).fetchNewAccessToken()
