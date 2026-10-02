@@ -3,7 +3,6 @@ package no.nav.hag.routes
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.HttpStatusCode.Companion.BadRequest
 import io.ktor.server.application.Application
-import io.ktor.server.application.call
 import io.ktor.server.response.respond
 import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
@@ -15,7 +14,15 @@ import no.nav.hag.maskinportenPrivateKey
 import no.nav.hag.maskinportenTokenEndpoint
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClient
 import no.nav.helsearbeidsgiver.maskinporten.MaskinportenClientConfigPkey
-import no.nav.helsearbeidsgiver.maskinporten.getSystemBrukerClaim
+
+private fun getSystemBrukerClaim(orgNr: String): Map<String, Any> =
+    mapOf(
+        "consumer" to
+            mapOf(
+                "authority" to "iso6523-actorid-upis",
+                "ID" to orgNr,
+            ),
+    )
 
 fun Application.tokenRouteMedClaim(
     path: String,
