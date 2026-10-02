@@ -10,6 +10,15 @@ plugins {
     id("org.jmailen.kotlinter")
 }
 
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "io.netty") {
+            useVersion("4.2.18.Final")
+            because("Override Ktor's Netty til en nyere versjon")
+        }
+    }
+}
+
 group = "no.nav.hag"
 version = "0.0.1"
 
