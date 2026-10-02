@@ -1,16 +1,21 @@
 val kotlin_version: String by project
+val ktorVersion: String by project
 val logback_version: String by project
 val mockOauth2ServerVersion: String by project
 
 plugins {
-    kotlin("jvm") version "2.0.20"
-    kotlin("plugin.serialization") version "2.0.20"
-    id("io.ktor.plugin") version "2.3.12"
+    kotlin("jvm") version "2.2.20"
+    kotlin("plugin.serialization") version "2.2.20"
+    id("io.ktor.plugin")
     id("org.jmailen.kotlinter")
 }
 
 group = "no.nav.hag"
 version = "0.0.1"
+
+kotlin {
+    jvmToolchain(21)
+}
 
 application {
     mainClass.set("no.nav.hag.ApplicationKt")
@@ -40,12 +45,9 @@ dependencies {
     implementation("io.ktor:ktor-server-core-jvm")
     implementation("io.ktor:ktor-server-html-builder")
     implementation("io.ktor:ktor-server-netty-jvm")
-    implementation("io.github.cdimascio:dotenv-kotlin:6.4.2")
     implementation("io.ktor:ktor-client-content-negotiation")
     implementation("io.ktor:ktor-serialization-kotlinx-json")
-
-    implementation("no.nav.helsearbeidsgiver:maskinporten-client:0.2.1.1-SNAPSHOT")
-
+    implementation("no.nav.helsearbeidsgiver:maskinporten-client:0.4.0-SNAPSHOT")
     testImplementation("io.ktor:ktor-server-test-host-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
