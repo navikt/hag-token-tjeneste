@@ -4,8 +4,8 @@ val logback_version: String by project
 val mockOauth2ServerVersion: String by project
 
 plugins {
-    kotlin("jvm") version "2.2.20"
-    kotlin("plugin.serialization") version "2.2.20"
+    kotlin("jvm") version "2.4.21"
+    kotlin("plugin.serialization") version "2.4.21"
     id("io.ktor.plugin")
     id("org.jmailen.kotlinter")
 }
